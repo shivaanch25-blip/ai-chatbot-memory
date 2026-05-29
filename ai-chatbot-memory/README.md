@@ -2,14 +2,18 @@
 
 Full-stack chatbot with **semantic conversation memory** using React (Vite), Flask, LangChain, local Ollama, and ChromaDB.
 
-## Architecture
+User message
+↓
+Frontend (React - Vercel)
+↓ API call
+Backend (Flask - Render)
+↓
+IF local:
+Ollama LLM (chat + embeddings)
+ELSE:
+Mock fallback system
 
-```
-User message → Embed (Ollama) → Store in ChromaDB
-            → Retrieve top-K similar messages
-            → Build context → LangChain + Ollama LLM → Reply
-            → Store assistant reply in ChromaDB
-```
+- ChromaDB memory (if available)
 
 ## Folder structure
 
@@ -36,7 +40,8 @@ ai-chatbot-memory/
 
 - **Python 3.10–3.12** (recommended for stable ChromaDB binary compatibility, especially on Windows)
 - **Node.js 18+**
-- **Ollama** installed and running (local LLM + embeddings)
+- **Ollama** (optional for local development only)
+- Cloud deployment works without Ollama using fallback mode
 
 ## Setup & run
 
@@ -83,11 +88,11 @@ python app.py
 
 Backend runs at **http://localhost:5000**
 
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/chat`  | POST   | `{ "message": "..." }` → `{ "reply": "..." }` |
-| `/reset` | POST   | Clears Chroma conversation memory |
-| `/health`| GET    | Health check |
+| Endpoint  | Method | Description                                   |
+| --------- | ------ | --------------------------------------------- |
+| `/chat`   | POST   | `{ "message": "..." }` → `{ "reply": "..." }` |
+| `/reset`  | POST   | Clears Chroma conversation memory             |
+| `/health` | GET    | Health check                                  |
 
 ### 2. Frontend
 
@@ -117,13 +122,44 @@ VITE_API_URL=http://localhost:5000
 
 ## Environment variables (backend)
 
-| Variable | Required | Default | Description |
-|----------|----------|---------|-------------|
-| `OLLAMA_BASE_URL` | No | `http://localhost:11434` | Ollama server URL |
-| `OLLAMA_CHAT_MODEL` | No | `llama3.1` | Chat model name (for replies) |
-| `OLLAMA_EMBED_MODEL` | No | `nomic-embed-text` | Embedding model name (for memory) |
+| Variable             | Required | Default                  | Description                       |
+| -------------------- | -------- | ------------------------ | --------------------------------- |
+| `OLLAMA_BASE_URL`    | No       | `http://localhost:11434` | Ollama server URL                 |
+| `OLLAMA_CHAT_MODEL`  | No       | `llama3.1`               | Chat model name (for replies)     |
+| `OLLAMA_EMBED_MODEL` | No       | `nomic-embed-text`       | Embedding model name (for memory) |
+
+User message
+↓
+Frontend (React - Vercel)
+↓ API call
+Backend (Flask - Render)
+↓
+IF local:
+Ollama LLM (chat + embeddings)
+ELSE:
+Mock fallback system
+
+- ChromaDB memory (if available)
+
+## 🌐 Deployment
+
+### Backend (Flask API)
+
+- Hosted on: Render
+- Mode: Hybrid (Ollama locally, Mock fallback in cloud)
+
+Base URL:
+https://ai-chatbot-memory-3.onrender.com
+
+### Frontend (React)
+
+- Hosted on: Vercel
+
+Live App:
+https://ai-chatbot-memory-psi.vercel.app/
 
 ## Troubleshooting
+
 - **Ollama connection error** — Make sure Ollama is installed, running, and the models exist:
   - `ollama serve`
   - `ollama pull llama3.1`
@@ -135,9 +171,29 @@ VITE_API_URL=http://localhost:5000
 
 ## Tech stack
 
-| Layer | Technology |
-|-------|------------|
-| Frontend | React 18, Vite |
-| Backend | Flask, flask-cors |
-| AI | LangChain, Ollama (chat + embeddings) |
-| Vector DB | ChromaDB (local persistent) |
+| Layer     | Technology                            |
+| --------- | ------------------------------------- |
+| Frontend  | React 18, Vite                        |
+| Backend   | Flask, flask-cors                     |
+| AI        | LangChain, Ollama (chat + embeddings) |
+| Vector DB | ChromaDB (local persistent)           |
+
+## 🔥 Hybrid AI System
+
+This project supports a production-safe hybrid architecture:
+
+- Local Mode → Uses Ollama for real LLM inference
+- Cloud Mode → Automatically switches to mock fallback system
+- Memory persists via JSON + ChromaDB (if available)
+
+This ensures the system works both locally and in cloud deployments without breaking.
+
+## 🚀 Features
+
+- Full-stack AI chatbot (React + Flask)
+- Semantic memory using ChromaDB
+- Local LLM integration via Ollama
+- Hybrid deployment (local + cloud fallback)
+- Persistent conversation memory
+- REST API backend
+- Production-ready deployment (Render + Vercel)
