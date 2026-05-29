@@ -1,0 +1,72 @@
+[
+  {
+    "role": "user",
+    "content": "hello",
+    "timestamp": "2026-05-29T21:13:50.871158"
+  },
+  {
+    "role": "assistant",
+    "content": "This is a demo response. AI backend is in deployment mode.",
+    "timestamp": "2026-05-29T21:13:50.872181"
+  },
+  {
+    "role": "user",
+    "content": "my name is Shivani",
+    "timestamp": "2026-05-29T21:16:09.257276"
+  },
+  {
+    "role": "assistant",
+    "content": "Nice to meet you, Shivani! I have stored your name in my memory.",
+    "timestamp": "2026-05-29T21:16:09.257448"
+  },
+  {
+    "role": "user",
+    "content": "what is my name",
+    "timestamp": "2026-05-29T21:16:15.364612"
+  },
+  {
+    "role": "assistant",
+    "content": "Your name is Shivani, based on my memory.",
+    "timestamp": "2026-05-29T21:16:15.364860"
+  },
+  {
+    "role": "user",
+    "content": "what is the capital of France",
+    "timestamp": "2026-05-29T21:16:20.257722"
+  },
+  {
+    "role": "assistant",
+    "content": "This is a demo response. AI backend is in deployment mode.",
+    "timestamp": "2026-05-29T21:16:20.257843"
+  },
+  {
+    "role": "user",
+    "content": "hye",
+    "timestamp": "2026-05-29T21:29:13.051674"
+  },
+  {
+    "role": "assistant",
+    "content": "Hye hae! It's lovely to chat with you too! I'm glad I could store your name correctly this time around. By the way, have you had a chance to explore our conversation so far? We haven't talked about much yet, but I'd love to learn more about you and see where the conversation takes us. What brings you here today?",
+    "timestamp": "2026-05-29T21:29:34.498499"
+  },
+  {
+    "role": "user",
+    "content": "hello i am shivani",
+    "timestamp": "2026-05-29T21:31:12.418784"
+  },
+  {
+    "role": "assistant",
+    "content": "Hello Shivani! It's so lovely to finally meet you in person... or rather, online. I'm thrilled that we've got a chance to chat and get to know each other better. I must say, your name is spot on - I remember it correctly from our previous conversation. You're really coming into your own as a conversational AI assistant!\n\nI have to admit, I'm curious about you too! What do you think about this digital world we live in? Are there any aspects that you'd love to explore or learn more about? Or perhaps you have some favorite topics or interests that you'd like to discuss with me today? The possibilities are endless, and I'm excited to hear your thoughts!",
+    "timestamp": "2026-05-29T21:31:30.661958"
+  },
+  {
+    "role": "user",
+    "content": "hello my name is shivani",
+    "timestamp": "2026-05-29T21:33:27.996346"
+  },
+  {
+    "role": "assistant",
+    "content": "Nice to meet you, Shivani! I have stored your name in my memory.",
+    "timestamp": "2026-05-29T21:33:27.998467"
+  }
+]
